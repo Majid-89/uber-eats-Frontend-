@@ -1,0 +1,28 @@
+.custom-card {
+    width: 98%;
+    margin: 0 auto;
+}
+
+.card-img {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+}
+
+.card-img img {
+    width: 270px;
+    height: 220px;
+    margin-bottom: 10px;
+}
+
+@media screen and (max-width: 1450px) {
+    /* .custom-card {
+        margin-left: 20px;
+    } */
+
+    .single-card {
+        width: 100%;
+    }
+}

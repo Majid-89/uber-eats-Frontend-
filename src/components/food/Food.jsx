@@ -1,0 +1,133 @@
+import { useState } from "react"
+import { data } from "../category/data";
+import "../food/Food.css"
+
+const Food = () => {
+    const [foods, setFoods] = useState(data);
+
+    // Filter types like burger , pizza chicken etc 
+    // take a function for filtering and pass category of json data
+    const filterType = (category) => {
+        setFoods(
+            data.filter((item) => {
+                return item.category === category
+            }))
+    };
+
+    // Filter by price 
+    const filterPrice = (price) => {
+        setFoods(
+            data.filter((item) => {
+                return item.price === price;
+            })
+        )
+    }
+
+    return (
+        <section className=' relative max-w-[1640px] m-auto  px-4 py-10'>
+            <h1 className=' text-orange-600 font-bold text-4xl text-center py-8'>
+                Top Rated Menu Items
+            </h1>
+
+            {/* Filter types */}
+            <div className=" flex justify-between items-center text-sm main-section">
+                <div className="row-1">
+                    <p className=' font-bold text-gray-700'>Filter Type</p>
+
+                    <button
+                        onClick={() => setFoods(data)}
+                        className='mx-1 border border-orange-600 text-orange-600 rounded-xl hover:bg-orange-600 p-1 hover:text-white '>
+                        All
+                    </button>
+                    <button
+                        onClick={() => filterType("Burger")}
+                        className='mx-1 border border-orange-600 text-orange-600 rounded-xl hover:bg-orange-600 p-1 hover:text-white'>
+                        Burgers
+                    </button>
+                    <button
+                        onClick={() => filterType("pizza")}
+                        className=' mx-1 border border-orange-600 text-orange-600 rounded-xl p-1 hover:bg-orange-600 hover:text-white '>
+                        Pizza
+                    </button>
+                    <button
+                        onClick={() => filterType("salads")}
+                        className=' mx-1 border border-orange-600 text-orange-600 rounded-xl p-1 hover:bg-orange-600 hover:text-white '>
+                        Salads
+                    </button>
+                    <button
+                        onClick={() =>
+                            filterType("chicken")}
+                        className=' mx-1 border border-orange-600 text-orange-600 rounded-xl  p-1 hover:bg-orange-600 hover:text-white '>
+                        Chicken
+                    </button>
+                </div>
+
+                {/* FILTER BY PRICE */}
+                <div className="row-2" >
+                    <p className=' font-bold text-gray-700'>Filter Price</p>
+                    <button
+                        onClick={() => filterPrice("$")}
+                        className=' mx-2 border border-orange-600 text-orange-600 rounded-xl p-1 sm:p-1  hover:bg-orange-600 hover:text-white '
+                    >
+                        $
+                    </button>
+                    <button
+                        onClick={() => filterPrice("$$")}
+                        className=' mx-2 border border-orange-600 text-orange-600 rounded-xl p-1 sm:p-1 hover:bg-orange-600 hover:text-white '
+                    >
+                        $$
+                    </button>
+                    <button
+                        onClick={() => filterPrice("$$")}
+                        className=' mx-2 border border-orange-600 text-orange-600 rounded-xl p-1 sm:p-1 hover:bg-orange-600 hover:text-white '
+                    >
+                        $$
+                    </button>
+                    <button
+                        onClick={() => filterPrice("$$$")}
+                        className=' mx-1 border border-orange-600 text-orange-600 rounded-xl p-1 sm:p-1 hover:bg-orange-600 hover:text-white '
+                    >
+                        $$$
+                    </button>
+                    <button
+                        onClick={() => filterPrice("$$$$")}
+                        className=' mx-1 border border-orange-600 text-orange-600 rounded-xl p-1 sm:p-1 hover:bg-orange-600 hover:text-white '
+                    >
+                        $$$$
+                    </button>
+                </div>
+            </div>
+
+
+
+            <div className=" grid grid-cols-2 lg:grid-cols-4 gap-6 pt-4">
+                {
+                    foods.map((item, index) => (
+                        <div
+                            key={index}
+                            className="border shadow-lg rounded-md hover:scale-105 duration-300 "
+                        >
+                            <div className="img-center">
+                                <img
+                                    src={item.image}
+                                    alt={item.name}
+                                    className=" w-45 rounded-t-l"
+                                />
+                            </div>
+                            <div className=" flex justify-between px-2 py-4">
+                                <p className=" font-bold ">{item.name}</p>
+                                <p>
+                                    <span className=" bg-orange-500 text-white p-1 rounded-full">
+                                        {item.price}
+                                    </span>
+                                </p>
+                            </div>
+                        </div>
+                    ))
+                }
+            </div>
+        </section>
+    )
+}
+
+export default Food
