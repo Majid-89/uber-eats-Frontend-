@@ -3,7 +3,6 @@ import Category from "../category/Category"
 import Food from "../food/Food";
 import Footer from '../footer/Footer';
 import Hero from "../product/Products"
-import Profile from "../Profile/ProfilePage"
 
 const home = () => {
   return (
@@ -39,9 +38,6 @@ const home = () => {
       <Category />
       <Food />
       <Footer />
-      <Profile />
-
-
     </main>
   )
 }
